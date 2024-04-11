@@ -3,7 +3,6 @@ const app=express();
 const db=require('./database')
 const bodyParser = require('body-parser'); 
 app.use(bodyParser.json());
-const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 
@@ -15,10 +14,11 @@ app.get('/', (req, res, next)=>{
 const personRoutes = require('./routes/personRoutes.js');
 const menuItemRoutes = require('./routes/menuItemRoutes');
 
-// Use the routers
 app.use('/person', personRoutes);
 app.use('/menu', menuItemRoutes);
 
+const PORT = process.env.PORT || 5000;
+// const PORT = 3000;
 app.listen(PORT, ()=> {
-    console.log("Server running on port no 3000");
+    console.log("Server running on port no", PORT); 
 })
