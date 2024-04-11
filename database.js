@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-// Provide the complete connection string including hostname, username, password, and database name
-// const mongoURL = process.env.MONGODB_URL;
-const mongoURL = process.env.LOCAL_URL;
+const mongoURL = process.env.MONGODB_URL;
+// const mongoURL = process.env.LOCAL_URL;
+// const mongoURL = 'mongodb://localhost:27017/hotels';
 
 mongoose.connect(mongoURL, { 
     useNewUrlParser: true, 
@@ -11,7 +12,6 @@ mongoose.connect(mongoURL, {
 
 const db = mongoose.connection;
 
-// Define event listeners for database connection
 db.on('connected', () => {
     console.log('Connected to MongoDB server');
 });
